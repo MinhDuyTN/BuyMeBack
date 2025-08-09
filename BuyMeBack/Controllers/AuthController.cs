@@ -1,6 +1,6 @@
 ﻿using BMB_Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using BuyMeBack.DTOs;
+using BMB_Services.DTOs;
 
 
 namespace BuyMeBack.Controllers

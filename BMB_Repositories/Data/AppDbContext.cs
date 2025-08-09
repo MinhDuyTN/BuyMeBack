@@ -12,5 +12,8 @@ namespace BMB_Repositories.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<User> Users => Set<User>();
+        public DbSet<KoiFish> KoiFishes { get; set; }
+        public DbSet<KoiFishImage> KoiFishImages { get; set; }
+
     }
 }

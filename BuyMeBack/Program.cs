@@ -1,4 +1,4 @@
-
+﻿
 using BMB_Services.Implementations;
 using BMB_Services.Interfaces;
 using BMB_Repositories.Implementations;
@@ -9,6 +9,7 @@ using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 namespace BuyMeBack
 {
@@ -40,20 +41,63 @@ namespace BuyMeBack
                 };
             });
             builder.Services.AddAuthorization();
-
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("BMB_Repositories")
+                )
+            );
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BuyMeBack API", Version = "v1" });
 
+                // ✅ Add JWT Authentication
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Nhập token dạng: **Bearer {your token here}**"
+                });
 
-            builder.Services.AddScoped<IUserService, UserService>();
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+            });
+            // CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontendOnly", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000", "https://myfrontend.com")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
+
+            //DI
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
+            builder.Services.AddScoped<IKoiFishRepository, KoiFishRepository>();
+            builder.Services.AddScoped<IKoiFishService, KoiFishService>();
 
 
             var app = builder.Build();
@@ -69,7 +113,7 @@ namespace BuyMeBack
             app.UseAuthentication();
             app.UseAuthorization();
 
-
+            app.UseCors("AllowFrontendOnly");
             app.MapControllers();
 
             app.Run();

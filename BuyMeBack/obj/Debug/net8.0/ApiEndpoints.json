@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "BuyMeBack.DTOs.UserLoginDto",
+        "Type": "BMB_Services.DTOs.UserLoginDto",
         "IsRequired": true
       }
     ],
@@ -25,10 +25,20 @@
     "Parameters": [
       {
         "Name": "userRegisterDto",
-        "Type": "BuyMeBack.DTOs.UserRegisterDto",
+        "Type": "BMB_Services.DTOs.UserRegisterDto",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BuyMeBack.Controllers.KoiFishController",
+    "Method": "GetAll",
+    "RelativePath": "api/KoiFish",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BMB_Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+570a48c11919c5147c9d863dd0bd76d6c38d202b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BMB_Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BMB_Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

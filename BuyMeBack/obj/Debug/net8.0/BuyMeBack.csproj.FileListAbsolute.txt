@@ -147,3 +147,4 @@ C:\Users\pcx\source\repos\BuyMeBack\BuyMeBack\bin\Debug\net8.0\tr\Microsoft.Code
 C:\Users\pcx\source\repos\BuyMeBack\BuyMeBack\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\pcx\source\repos\BuyMeBack\BuyMeBack\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\pcx\source\repos\BuyMeBack\BuyMeBack\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\pcx\source\repos\BuyMeBack\BuyMeBack\obj\Debug\net8.0\BuyMeBack.sourcelink.json

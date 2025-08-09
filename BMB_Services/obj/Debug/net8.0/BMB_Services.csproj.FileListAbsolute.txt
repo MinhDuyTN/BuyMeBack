@@ -13,3 +13,4 @@ C:\Users\pcx\source\repos\BuyMeBack\BMB_Services\obj\Debug\net8.0\BMB_Services.d
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Services\obj\Debug\net8.0\refint\BMB_Services.dll
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Services\obj\Debug\net8.0\BMB_Services.pdb
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Services\obj\Debug\net8.0\ref\BMB_Services.dll
+C:\Users\pcx\source\repos\BuyMeBack\BMB_Services\obj\Debug\net8.0\BMB_Services.sourcelink.json

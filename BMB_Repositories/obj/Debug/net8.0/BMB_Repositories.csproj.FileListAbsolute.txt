@@ -12,3 +12,4 @@ C:\Users\pcx\source\repos\BuyMeBack\BMB_Repositories\obj\Debug\net8.0\refint\BMB
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Repositories\obj\Debug\net8.0\BMB_Repositories.pdb
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Repositories\obj\Debug\net8.0\BMB_Repositories.genruntimeconfig.cache
 C:\Users\pcx\source\repos\BuyMeBack\BMB_Repositories\obj\Debug\net8.0\ref\BMB_Repositories.dll
+C:\Users\pcx\source\repos\BuyMeBack\BMB_Repositories\obj\Debug\net8.0\BMB_Repositories.sourcelink.json

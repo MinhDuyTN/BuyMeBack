@@ -1,5 +1,6 @@
 ﻿using BMB_Repositories.Entities;
 using BMB_Repositories.Interfaces;
+using BMB_Services.DTOs;
 using BMB_Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -25,7 +26,7 @@ namespace BMB_Services.Implementations
             _config = config;
         }
 
-        public async Task<string?> LoginAsync(string email, string password)
+        public async Task<LoginResponseModel?> LoginAsync(string email, string password)
         {
             var user = await _userRepository.GetByEmailAsync(email);
             if (user == null) return null;
@@ -65,7 +66,7 @@ namespace BMB_Services.Implementations
             return inputHash == storedHash;
         }
 
-        private string GenerateJwtToken(User user)
+        private LoginResponseModel GenerateJwtToken(User user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -76,16 +77,23 @@ namespace BMB_Services.Implementations
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email)
             };
-
+            var expires = DateTime.UtcNow.AddHours(3);
             var token = new JwtSecurityToken(
                 _config["Jwt:Issuer"],
                 _config["Jwt:Issuer"],
                 claims,
-                expires: DateTime.UtcNow.AddHours(3),
+                expires: expires,
                 signingCredentials: creds
             );
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return new LoginResponseModel 
+            {
+                Token = tokenString,
+                Username = user.Username,
+                Email = user.Email,
+                ExpiresAt = expires
+            };
         }
     }
 }
